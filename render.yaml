@@ -6,7 +6,8 @@ services:
     startCommand: node src/server/server.js
     envVars:
       - key: MONGO_URL
-        value: <YOUR_MONGODB_URI>
+        value: mongodb+srv://system:manoafterearth@manohar.akxlcik.mongodb.net/afterearth?retryWrites=true&w=majority&appName=AfterEarth
+
     plan: free
 
   - type: web
