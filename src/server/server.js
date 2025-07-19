@@ -7,6 +7,9 @@ import multer from "multer"; // ✅ Import multer for file uploads
 import { fileURLToPath } from "url"; // Required for ES Module __dirname workaround
 import mongoose from "mongoose";
 
+import dotenv from "dotenv";
+dotenv.config();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -22,10 +25,13 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ✅ Ser
 app.use(express.static(path.join(__dirname, "../../build")));
 
 // ✅ Connect to MongoDB
-const MONGO_URI = "mongodb://localhost:27017/afterEarth"; // Example local connection string
+// const MONGO_URI = "mongodb://localhost:27017/afterEarth"; // Example local connection string
 
 mongoose
-  .connect(MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
   .then(() => console.log("✅ Connected to MongoDB"))
   .catch((error) => console.log("❌ MongoDB Connection Error:", error));
 

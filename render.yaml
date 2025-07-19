@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: afterearth-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node src/server/server.js
+    envVars:
+      - key: MONGO_URL
+        value: <YOUR_MONGODB_URI>
+    plan: free
+
+  - type: web
+    name: afterearth-frontend
+    env: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://afterearth-backend.onrender.com
+    plan: free
