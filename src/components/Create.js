@@ -101,14 +101,17 @@ const Create = ({ onPostSubmit }) => {
     // }
 
     try {
-      const response = await fetch("http://localhost:5000/home-afterearth", {
-        method: "POST",
-        // headers: { "Content-Type": "application/json" },
+      const response = await fetch(
+        `${process.env.REACT_APP_API_URL}/home-afterearth`,
+        {
+          method: "POST",
+          // headers: { "Content-Type": "application/json" },
 
-        body: formData, // ✅ Send FormData instead of JSON
+          body: formData, // ✅ Send FormData instead of JSON
 
-        // body: JSON.stringify(postData),
-      });
+          // body: JSON.stringify(postData),
+        }
+      );
 
       if (!response.ok) {
         throw new Error(`❌ Server Error: ${response.status}`);

@@ -49,7 +49,7 @@ const Post = ({ postData }) => {
           <div className="post-image-container group-one">
             {postData.file ? (
               <img
-                src={`http://localhost:5000/uploads/${postData.file}`} // ✅ Correct image path
+                src={`${process.env.REACT_APP_API_URL}/uploads/${postData.file}`} // ✅ Correct image path
                 alt="Post"
                 className="post-image"
                 onError={(e) => {

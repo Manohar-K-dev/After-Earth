@@ -22,7 +22,7 @@ app.use(express.json()); // ✅ Middleware to parse JSON
 app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ✅ Serve uploaded files
 
 // Serve the React frontend from the "build" folder
-app.use(express.static(path.join(__dirname, "../../build")));
+// app.use(express.static(path.join(__dirname, "../../build")));
 
 // ✅ Connect to MongoDB
 // const MONGO_URI = "mongodb://localhost:27017/afterEarth"; // Example local connection string
@@ -186,9 +186,9 @@ app.get("/home-afterearth", async (req, res) => {
 });
 
 // Handle all other requests by serving React's `index.html`
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../../build/index.html"));
-});
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../../build/index.html"));
+// });
 
 // Start Server
 app.listen(PORT, () => {

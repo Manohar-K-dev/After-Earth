@@ -12,7 +12,9 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch("http://localhost:5000/home-afterearth");
+        const response = await fetch(
+          `${process.env.REACT_APP_API_URL}/home-afterearth`
+        );
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

@@ -71,7 +71,7 @@ const Signup = () => {
     // Send signup data to backend
     try {
       const response = await fetch(
-        "http://localhost:5000/signup-afterearth", // ✅ Change to port 5000
+        `${process.env.REACT_APP_API_URL}/signup-afterearth`, // ✅ Change to port 5000
         {
           method: "POST",
           headers: {
