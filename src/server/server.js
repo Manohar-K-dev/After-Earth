@@ -1,3 +1,4 @@
+import dotenv from "dotenv";
 import express, { json } from "express";
 import { Schema, model } from "mongoose";
 import cors from "cors";
@@ -6,8 +7,6 @@ import path from "path";
 import multer from "multer"; // ✅ Import multer for file uploads
 import { fileURLToPath } from "url"; // Required for ES Module __dirname workaround
 import mongoose from "mongoose";
-
-import dotenv from "dotenv";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,10 +24,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads"))); // ✅ Ser
 // app.use(express.static(path.join(__dirname, "../../build")));
 
 // ✅ Connect to MongoDB
-// const MONGO_URI = "mongodb://localhost:27017/afterEarth"; // Example local connection string
+// const MONGO_URL = "mongodb://localhost:27017/afterEarth"; // Example local connection string
 
 mongoose
-  .connect(process.env.MONGO_URI, {
+  .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
